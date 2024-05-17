@@ -45,6 +45,7 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
         service = []
         insulation = []
         for model in response.json():
+            print(model)
             model_names.append(model['modelName'])
             grid .append(model['Grid'])
             comfort.append(model['Comfort'])
