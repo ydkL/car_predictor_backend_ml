@@ -3,7 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import firstTry
 import json
 import httpx
+import logging
+from logging_config import LOGGING_CONFIG
 
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -45,6 +48,7 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
         service = []
         insulation = []
         for model in response.json():
+            logger.debug(model)
             print(model)
             '''
             model_names.append(model['modelName'])
