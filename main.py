@@ -44,10 +44,9 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
         security = []
         service = []
         insulation = []
-        dictJ = json.loads(response.json())
-        
-        for model in dictJ:
+        for model in response.json():
             print(model)
+            '''
             model_names.append(model['modelName'])
             grid .append(model['Grid'])
             comfort.append(model['Comfort'])
@@ -58,6 +57,8 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
             security.append(model['Security'])
             service.append(model['Service'])
             insulation.append(model['Insulation'])
+            '''
+        
         models.append({
             "Grid" : grid,
             "Models" : model_names
@@ -102,11 +103,12 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
             "Insulation": grid,
             "Models": model_names
         })
-
+    predicted_model = "asd"
+    '''
     clf, le, X = firstTry.train_models(models)
     predicted_model = firstTry.predict_car_model(input_values, clf, le, X)
     print("Predicted car model easy to use:", predicted_model)
-
+    '''
     # Perform processing here
     result = {
         "Predicted Model": predicted_model
