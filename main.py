@@ -4,7 +4,6 @@ import firstTry
 import json
 import httpx
 import logging
-from logging_config import LOGGING_CONFIG
 
 logger = logging.getLogger(__name__)
 
