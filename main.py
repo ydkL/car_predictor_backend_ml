@@ -34,7 +34,7 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
 
     # Call another endpoint
     async with httpx.AsyncClient() as client:
-        response = await client.get("http://localhost:8001/model-stats/")
+        response = await client.get("https://car-predictor-backend-db.onrender.com/model-stats/")
         models = []
         model_names = []
         grid = []
@@ -47,9 +47,6 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
         service = []
         insulation = []
         for model in response.json():
-            logger.debug(model)
-            print(model)
-            '''
             model_names.append(model['modelName'])
             grid .append(model['Grid'])
             comfort.append(model['Comfort'])
@@ -60,7 +57,7 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
             security.append(model['Security'])
             service.append(model['Service'])
             insulation.append(model['Insulation'])
-            '''
+            
         
         models.append({
             "Grid" : grid,
@@ -106,12 +103,12 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
             "Insulation": grid,
             "Models": model_names
         })
-    predicted_model = "asd"
-    '''
+    predicted_model = ""
+    
     clf, le, X = firstTry.train_models(models)
     predicted_model = firstTry.predict_car_model(input_values, clf, le, X)
     print("Predicted car model easy to use:", predicted_model)
-    '''
+    
     # Perform processing here
     result = {
         "Predicted Model": predicted_model
