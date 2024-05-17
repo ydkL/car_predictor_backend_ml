@@ -44,7 +44,9 @@ async def process_data(param1: float, param2: float, param3: float, param4: floa
         security = []
         service = []
         insulation = []
-        for model in response.json():
+        dictJ = json.loads(response.json())
+        
+        for model in dictJ:
             print(model)
             model_names.append(model['modelName'])
             grid .append(model['Grid'])
